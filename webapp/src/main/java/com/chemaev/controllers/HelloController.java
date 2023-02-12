@@ -21,13 +21,46 @@ public class HelloController {
         this.userRepository = userRepository;
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping(value = {"/users/{id}", "users"})
     public Iterable<User> user(@PathVariable(required = false) Optional<Integer> id) {
         if (id.isPresent()) {
             return userRepository.findAllById(List.of(id.get()));
-        }
-        else {
+        } else {
             return userRepository.findAll();
+        }
+    }
+
+    @GetMapping("/addUser")
+    public String addUser(@RequestParam Optional<String> name, Optional<String> email) {
+        User user = new User(name.orElse("None"), email.orElse("None"));
+        userRepository.save(user);
+        return "OK";
+    }
+
+    @GetMapping("/deleteUser")
+    public String deleteUser(@RequestParam Optional<Integer> id) {
+        if (id.isPresent()) {
+            userRepository.deleteById(id.get());
+            return String.format("User %s is successfully deleted", id.get());
+        } else {
+            return "Insert id";
+        }
+    }
+
+    @GetMapping("/editUser/{id}")
+    public String editUser(@PathVariable Optional<Integer> id,
+                           @RequestParam Optional<String> name, Optional<String> email) {
+        if (id.isPresent()) {
+            Optional<User> curUser = userRepository.findById(id.get());
+            if (curUser.isPresent()) {
+                name.ifPresent(s -> curUser.get().setName(s));
+                email.ifPresent(s -> curUser.get().setEmail(s));
+                userRepository.save(curUser.get());
+                return String.format("User %s is successfully edited", id.get());
+            }
+            return String.format("No user with id %s was found", id.get());
+        } else {
+            return "Insert id";
         }
     }
 
