@@ -15,7 +15,7 @@ public class CreateUserRequestDto {
     private String name;
 
     @NotBlank(message = "Email shouldn't be blank")
-    @Email(regexp = "")
+    @Email
     private String email;
 
     @Past(message = "Birthdate should be real")
