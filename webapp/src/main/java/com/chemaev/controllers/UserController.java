@@ -66,4 +66,22 @@ public class UserController {
             return "User with id " + id + " was successfully deleted";
         }
     }
+
+    @PutMapping(value = "/updateUser/{id}",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public String updateUser(@Valid @RequestBody CreateUserRequestDto newUser, @PathVariable Integer id) {
+        if (userRepository.findById(id).isEmpty()) {
+            return "No user with id " + id + " was found";
+        } else {
+            User user = User.builder()
+                    .id(id)
+                    .name(newUser.getName().trim())
+                    .email(newUser.getEmail().trim())
+                    .birthday(newUser.getBirthday())
+                    .build();
+            userRepository.save(user);
+            return "User with id " + id + " was successfully edited";
+        }
+    }
 }
