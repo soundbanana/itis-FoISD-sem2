@@ -56,4 +56,14 @@ public class UserController {
     public Optional<User> getUserById(@PathVariable(required = false) Optional<Integer> id) {
         return id.map(userRepository::findById).orElse(null);
     }
+
+    @DeleteMapping("/deleteUser")
+    public String deleteUser(@RequestParam(value = "id") Integer id) {
+        if (userRepository.findById(id).isEmpty()) {
+            return "No user with id " + id + " was found";
+        } else {
+            userRepository.deleteById(id);
+            return "User with id " + id + " was successfully deleted";
+        }
+    }
 }
