@@ -20,4 +20,9 @@ public class User {
     private String email;
     @DateTimeFormat(pattern = "YYYY-MM-DD")
     private LocalDate birthday;
+    @OneToOne(mappedBy = "user")
+    private Passport passport;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "group_id")
+    private Group group;
 }

@@ -4,24 +4,21 @@ import com.chemaev.dto.CreateUserRequestDto;
 import com.chemaev.dto.UserResponseDto;
 import com.chemaev.model.User;
 import com.chemaev.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.chemaev.services.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RestController
+@AllArgsConstructor
 public class UserController {
 
     private final UserRepository userRepository;
-
-    @Autowired
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    private final UserService userService;
 
     @GetMapping("/hello")
     public String hello(@RequestParam Optional<String> name) {
@@ -32,24 +29,12 @@ public class UserController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public UserResponseDto createUser(@Valid @RequestBody CreateUserRequestDto newUser) {
-        return UserResponseDto.fromEntity(userRepository.save(
-                User.builder()
-                        .name(newUser.getName().trim())
-                        .email(newUser.getEmail().trim())
-                        .birthday(newUser.getBirthday())
-                        .build()
-        ));
+        return userService.createUser(newUser);
     }
 
     @GetMapping(value = {"/users/", "users"})
     public List<UserResponseDto> getAllUsers() {
-        return userRepository.findAll().stream().map(u -> UserResponseDto.builder()
-                        .id(u.getId())
-                        .name(u.getName())
-                        .email(u.getEmail())
-                        .birthday(u.getBirthday())
-                        .build())
-                .collect(Collectors.toList());
+        return userService.findAll();
     }
 
     @GetMapping(value = {"/users/{id}", "users"})
