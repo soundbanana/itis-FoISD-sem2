@@ -1,6 +1,6 @@
 package com.chemaev.dto;
 
-import com.chemaev.model.User;
+import com.chemaev.model.University.User;
 import lombok.Builder;
 import lombok.Data;
 

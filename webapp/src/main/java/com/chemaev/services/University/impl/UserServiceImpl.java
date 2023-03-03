@@ -1,10 +1,10 @@
-package com.chemaev.services.impl;
+package com.chemaev.services.University.impl;
 
 import com.chemaev.dto.CreateUserRequestDto;
 import com.chemaev.dto.UserResponseDto;
-import com.chemaev.model.User;
-import com.chemaev.repository.UserRepository;
-import com.chemaev.services.UserService;
+import com.chemaev.model.University.User;
+import com.chemaev.repository.University.UserRepository;
+import com.chemaev.services.University.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

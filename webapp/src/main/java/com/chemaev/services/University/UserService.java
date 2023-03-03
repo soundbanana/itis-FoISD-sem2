@@ -1,4 +1,4 @@
-package com.chemaev.services;
+package com.chemaev.services.University;
 
 import com.chemaev.dto.CreateUserRequestDto;
 import com.chemaev.dto.UserResponseDto;

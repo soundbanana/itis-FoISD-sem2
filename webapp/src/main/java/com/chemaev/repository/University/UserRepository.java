@@ -1,6 +1,6 @@
-package com.chemaev.repository;
+package com.chemaev.repository.University;
 
-import com.chemaev.model.User;
+import com.chemaev.model.University.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -2,9 +2,9 @@ package com.chemaev.controllers;
 
 import com.chemaev.dto.CreateUserRequestDto;
 import com.chemaev.dto.UserResponseDto;
-import com.chemaev.model.User;
-import com.chemaev.repository.UserRepository;
-import com.chemaev.services.UserService;
+import com.chemaev.model.University.User;
+import com.chemaev.repository.University.UserRepository;
+import com.chemaev.services.University.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,6 @@ import java.util.Optional;
 @RestController
 @AllArgsConstructor
 public class UserController {
-
     private final UserRepository userRepository;
     private final UserService userService;
 
