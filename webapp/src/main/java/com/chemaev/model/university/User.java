@@ -1,4 +1,4 @@
-package com.chemaev.model.University;
+package com.chemaev.model.university;
 
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;

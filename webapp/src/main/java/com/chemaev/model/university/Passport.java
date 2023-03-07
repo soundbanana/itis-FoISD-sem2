@@ -1,4 +1,4 @@
-package com.chemaev.model.University;
+package com.chemaev.model.university;
 
 import javax.persistence.*;
 

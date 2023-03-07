@@ -1,8 +1,8 @@
 package com.chemaev.controllers;
 
-import com.chemaev.model.Literature.Author;
-import com.chemaev.repository.Literature.AuthorRepository;
-import com.chemaev.services.Literature.AuthorService;
+import com.chemaev.model.literature.Author;
+import com.chemaev.repository.literature.AuthorRepository;
+import com.chemaev.services.literature.AuthorService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;

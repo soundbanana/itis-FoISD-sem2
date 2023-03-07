@@ -1,7 +1,7 @@
-package com.chemaev.services.University;
+package com.chemaev.services.university;
 
-import com.chemaev.dto.CreateUserRequestDto;
-import com.chemaev.dto.UserResponseDto;
+import com.chemaev.dto.university.CreateUserRequestDto;
+import com.chemaev.dto.university.UserResponseDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

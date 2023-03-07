@@ -1,4 +1,4 @@
-package com.chemaev.model.Literature;
+package com.chemaev.model.literature;
 
 import lombok.Getter;
 import lombok.Setter;

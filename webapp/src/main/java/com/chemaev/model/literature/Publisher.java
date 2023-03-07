@@ -1,4 +1,4 @@
-package com.chemaev.model.University;
+package com.chemaev.model.literature;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,17 +6,20 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity(name = "subjects")
+@Entity(name = "publishers")
 @Getter
 @Setter
-public class Subject {
+public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @OneToOne(mappedBy = "publisher")
+    private LegalAddress legalAddress;
+
     @Column(nullable = false)
     private String name;
 
-    @ManyToMany(mappedBy = "subjects")
-    private List<Group> groups;
+    @ManyToMany(mappedBy = "publishers")
+    private List<Book> books;
 }

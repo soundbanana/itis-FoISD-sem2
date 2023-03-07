@@ -1,9 +1,8 @@
-package com.chemaev.services.Literature.impl;
+package com.chemaev.services.literature.impl;
 
-import com.chemaev.model.Literature.Author;
-import com.chemaev.model.University.User;
-import com.chemaev.repository.Literature.AuthorRepository;
-import com.chemaev.services.Literature.AuthorService;
+import com.chemaev.model.literature.Author;
+import com.chemaev.repository.literature.AuthorRepository;
+import com.chemaev.services.literature.AuthorService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

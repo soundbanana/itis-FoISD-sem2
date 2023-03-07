@@ -1,6 +1,6 @@
-package com.chemaev.repository.Literature;
+package com.chemaev.repository.literature;
 
-import com.chemaev.model.Literature.Book;
+import com.chemaev.model.literature.Book;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 
