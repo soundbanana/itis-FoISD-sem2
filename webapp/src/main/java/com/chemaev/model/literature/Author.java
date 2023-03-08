@@ -1,16 +1,15 @@
 package com.chemaev.model.literature;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 
 import javax.persistence.*;
-import java.lang.reflect.Type;
 import java.util.List;
 
 @Entity(name = "authors")
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,7 +19,13 @@ public class Author {
     private Integer id;
     @Column(nullable = false)
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "author_id", referencedColumnName = "id")
+    @OneToMany(
+            fetch = FetchType.EAGER,
+            mappedBy = "author",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @JsonIgnoreProperties(value = {"author", "hibernateLazyInitializer", "handler"}, allowSetters = true)
+    @JsonManagedReference
     private List<Book> books;
 }

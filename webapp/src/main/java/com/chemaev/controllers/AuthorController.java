@@ -2,7 +2,6 @@ package com.chemaev.controllers;
 
 import com.chemaev.dto.literature.AuthorResponseDto;
 import com.chemaev.dto.literature.CreateAuthorRequestDto;
-import com.chemaev.model.literature.Author;
 import com.chemaev.repository.literature.AuthorRepository;
 import com.chemaev.repository.literature.BookRepository;
 import com.chemaev.services.literature.AuthorService;
@@ -20,10 +19,6 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 public class AuthorController {
-    @Autowired
-    private final AuthorRepository authorRepository;
-    @Autowired
-    private final BookRepository bookRepository;
     private final AuthorService authorService;
     // TODO add other services here!
 
