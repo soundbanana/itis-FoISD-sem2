@@ -6,10 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.lang.reflect.Type;
 import java.util.List;
 
-@Entity
-@Table(name = "authors")
+@Entity(name = "authors")
 @Data
 @Builder
 @NoArgsConstructor
@@ -20,6 +20,7 @@ public class Author {
     private Integer id;
     @Column(nullable = false)
     private String name;
-    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "author_id", referencedColumnName = "id")
     private List<Book> books;
 }
