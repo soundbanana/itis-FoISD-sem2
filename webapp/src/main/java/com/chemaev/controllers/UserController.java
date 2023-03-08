@@ -31,14 +31,14 @@ public class UserController {
         return userService.createUser(newUser);
     }
 
-    @GetMapping(value = {"/users/", "users"})
+    @GetMapping(value = "/users")
     public List<UserResponseDto> getAllUsers() {
         return userService.findAll();
     }
 
-    @GetMapping(value = {"/users/{id}", "users"})
-    public Optional<User> getUserById(@PathVariable(required = false) Optional<Integer> id) {
-        return id.map(userRepository::findById).orElse(null);
+    @GetMapping(value = "/users/{id}")
+    public Optional<User> getUserById(@PathVariable Integer id) {
+        return userRepository.findById(id);
     }
 
     @DeleteMapping("/deleteUser")
