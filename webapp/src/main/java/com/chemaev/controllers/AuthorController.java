@@ -2,11 +2,8 @@ package com.chemaev.controllers;
 
 import com.chemaev.dto.literature.AuthorResponseDto;
 import com.chemaev.dto.literature.CreateAuthorRequestDto;
-import com.chemaev.repository.literature.AuthorRepository;
-import com.chemaev.repository.literature.BookRepository;
 import com.chemaev.services.literature.AuthorService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,9 +1,8 @@
 package com.chemaev.controllers;
 
-import com.chemaev.dto.CreateBookRequestDto;
+import com.chemaev.dto.literature.CreateBookRequestDto;
 import com.chemaev.dto.literature.BookResponseDto;
 import com.chemaev.model.literature.Book;
-import com.chemaev.repository.literature.BookRepository;
 import com.chemaev.services.literature.BookService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;

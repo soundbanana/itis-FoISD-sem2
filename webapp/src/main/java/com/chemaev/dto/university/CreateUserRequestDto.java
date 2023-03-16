@@ -3,10 +3,7 @@ package com.chemaev.dto.university;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 @Data
@@ -19,7 +16,8 @@ public class CreateUserRequestDto {
     private String email;
 
     @Past(message = "Birthdate should be real")
-    @NotNull(message = "Birthdate shouldn't be null")
     @DateTimeFormat(pattern = "YYY-MM-DD")
     private LocalDate birthday;
+    @Size(min = 8, max = 64, message = "Password should contain from 8 to 64 symbols")
+    private String password;
 }

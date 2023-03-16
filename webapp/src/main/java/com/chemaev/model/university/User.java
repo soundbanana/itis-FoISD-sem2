@@ -4,7 +4,9 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -18,6 +20,8 @@ public class User {
     private Integer id;
     private String name;
     private String email;
+    @Column(nullable = false, length = 64)
+    private String password;
     @DateTimeFormat(pattern = "YYYY-MM-DD")
     private LocalDate birthday;
     @OneToOne(mappedBy = "user")
@@ -25,4 +29,11 @@ public class User {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "group_id")
     private Group group;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
+    )
+    private Set<Role> roles;
 }

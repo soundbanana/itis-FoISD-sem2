@@ -1,4 +1,4 @@
-package com.chemaev.dto;
+package com.chemaev.dto.literature;
 
 import com.chemaev.model.literature.Author;
 import com.chemaev.model.literature.Publisher;

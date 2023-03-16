@@ -7,28 +7,29 @@ import com.chemaev.repository.university.UserRepository;
 import com.chemaev.services.university.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 @AllArgsConstructor
 public class UserController {
     private final UserRepository userRepository;
     private final UserService userService;
 
+    @ResponseBody
     @GetMapping("/hello")
     public String hello(@RequestParam Optional<String> name) {
         return String.format("Hello %s!", name.orElse("Ivan"));
     }
 
-    @PostMapping(value = "/addUser",
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public UserResponseDto createUser(@Valid @RequestBody CreateUserRequestDto newUser) {
-        return userService.createUser(newUser);
+    @PostMapping(value = "/user")
+    public String createUser(@ModelAttribute CreateUserRequestDto newUser) {
+        userService.createUser(newUser);
+        return "sign_up_success";
     }
 
     @GetMapping(value = "/users")
@@ -36,6 +37,7 @@ public class UserController {
         return userService.findAll();
     }
 
+    @ResponseBody
     @GetMapping(value = "/users/{id}")
     public Optional<User> getUserById(@PathVariable Integer id) {
         return userRepository.findById(id);
