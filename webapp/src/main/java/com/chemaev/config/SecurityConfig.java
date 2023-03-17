@@ -19,7 +19,7 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
-                .antMatchers("/home", "/user_profile")
+                .antMatchers("/user_profile")
                 .authenticated()
                 .anyRequest().permitAll()
                 .and()

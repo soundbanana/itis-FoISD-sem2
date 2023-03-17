@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Library</title>
+</head>
+
+<body>
+<h1>Books List:</h1>
+<a href="/home">Home</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${booksList.isEmpty()}">
+        <td colspan="2"> No books found</td>
+    </tr>
+    <tr th:each="book : ${booksList}">
+        <td><span th:text="${book.id}"> Id </span></td>
+        <td><span th:text="${book.name}"> Name </span></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
