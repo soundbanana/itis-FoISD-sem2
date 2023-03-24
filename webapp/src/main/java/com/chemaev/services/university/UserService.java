@@ -10,7 +10,11 @@ import java.util.Optional;
 
 @Service
 public interface UserService {
-    UserResponseDto createUser(CreateUserRequestDto newUser);
+    UserResponseDto createUser(CreateUserRequestDto userDto, String url);
+
+    boolean verify(String verificationCode);
+
+    void sendVerificationMail(String mail, String name, String code, String url);
 
     List<UserResponseDto> findAll();
 

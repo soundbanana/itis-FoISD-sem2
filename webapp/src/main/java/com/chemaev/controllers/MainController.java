@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 public class MainController {
 
     @GetMapping("/home")
-    public String home() {
+    public String home(HttpServletRequest httpServletRequest) {
+        String currentPrincipalName = httpServletRequest.getUserPrincipal().getName();
         return "home";
     }
 

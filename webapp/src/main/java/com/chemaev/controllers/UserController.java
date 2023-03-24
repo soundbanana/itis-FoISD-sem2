@@ -6,10 +6,12 @@ import com.chemaev.model.university.User;
 import com.chemaev.repository.university.UserRepository;
 import com.chemaev.services.university.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -27,9 +29,19 @@ public class UserController {
     }
 
     @PostMapping(value = "/user")
-    public String createUser(@ModelAttribute CreateUserRequestDto newUser) {
-        userService.createUser(newUser);
+    public String createUser(@ModelAttribute CreateUserRequestDto user, HttpServletRequest request) {
+        String url = request.getRequestURL().toString().replace(request.getServletPath(), "");
+        userService.createUser(user, url);;
         return "sign_up_success";
+    }
+
+    @GetMapping("/verification")
+    public String verify(@Param("code") String code) {
+        if (userService.verify(code)) {
+            return "verification_success";
+        } else {
+            return "verification_failed";
+        }
     }
 
     @GetMapping(value = "/users")

@@ -88,3 +88,5 @@ target/
 
 /bin
 
+
+webapp/src/main/resources/application.properties

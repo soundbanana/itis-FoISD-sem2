@@ -30,4 +30,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Query(value = "select u from User u where u.id in :ids")
     List<User> findAllByIds(@Param("ids") List<Integer> ids);
+
+    User findByVerificationCode(String code);
+
 }
