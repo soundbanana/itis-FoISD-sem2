@@ -19,7 +19,6 @@ import java.util.Optional;
 @Controller
 @AllArgsConstructor
 public class UserController {
-    private final UserRepository userRepository;
     private final UserService userService;
 
     @ResponseBody
@@ -31,7 +30,8 @@ public class UserController {
     @PostMapping(value = "/user")
     public String createUser(@ModelAttribute CreateUserRequestDto user, HttpServletRequest request) {
         String url = request.getRequestURL().toString().replace(request.getServletPath(), "");
-        userService.createUser(user, url);;
+        userService.createUser(user, url);
+        ;
         return "sign_up_success";
     }
 
@@ -44,42 +44,41 @@ public class UserController {
         }
     }
 
-    @GetMapping(value = "/users")
-    public List<UserResponseDto> getAllUsers() {
-        return userService.findAll();
-    }
-
     @ResponseBody
-    @GetMapping(value = "/users/{id}")
-    public Optional<User> getUserById(@PathVariable Integer id) {
-        return userRepository.findById(id);
-    }
-
-    @DeleteMapping("/deleteUser")
-    public String deleteUser(@RequestParam(value = "id") Integer id) {
-        if (userRepository.findById(id).isEmpty()) {
-            return "No user with id " + id + " was found";
+    @GetMapping(value = {"/users/{id}", "users"})
+    public List<UserResponseDto> user(@PathVariable(required = false) Optional<Integer> id) {
+        if (id.isPresent()) {
+            return List.of(userService.findById(id.get()).get());
         } else {
-            userRepository.deleteById(id);
-            return "User with id " + id + " was successfully deleted";
+            return userService.findAll();
         }
     }
 
-    @PutMapping(value = "/updateUser/{id}",
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public String updateUser(@Valid @RequestBody CreateUserRequestDto newUser, @PathVariable Integer id) {
-        if (userRepository.findById(id).isEmpty()) {
-            return "No user with id " + id + " was found";
-        } else {
-            User user = User.builder()
-                    .id(id)
-                    .name(newUser.getName().trim())
-                    .email(newUser.getEmail().trim())
-                    .birthday(newUser.getBirthday())
-                    .build();
-            userRepository.save(user);
-            return "User with id " + id + " was successfully edited";
-        }
-    }
+//    @DeleteMapping("/deleteUser")
+//    public String deleteUser(@RequestParam(value = "id") Integer id) {
+//        if (userRepository.findById(id).isEmpty()) {
+//            return "No user with id " + id + " was found";
+//        } else {
+//            userRepository.deleteById(id);
+//            return "User with id " + id + " was successfully deleted";
+//        }
+//    }
+
+//    @PutMapping(value = "/updateUser/{id}",
+//            consumes = MediaType.APPLICATION_JSON_VALUE,
+//            produces = MediaType.APPLICATION_JSON_VALUE)
+//    public String updateUser(@Valid @RequestBody CreateUserRequestDto newUser, @PathVariable Integer id) {
+//        if (userRepository.findById(id).isEmpty()) {
+//            return "No user with id " + id + " was found";
+//        } else {
+//            User user = User.builder()
+//                    .id(id)
+//                    .name(newUser.getName().trim())
+//                    .email(newUser.getEmail().trim())
+//                    .birthday(newUser.getBirthday())
+//                    .build();
+//            userRepository.save(user);
+//            return "User with id " + id + " was successfully edited";
+//        }
+//    }
 }
