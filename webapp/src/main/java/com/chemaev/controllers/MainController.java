@@ -1,5 +1,6 @@
 package com.chemaev.controllers;
 
+import com.chemaev.aspect.Loggable;
 import com.chemaev.dto.university.CreateUserRequestDto;
 import com.chemaev.model.university.User;
 import org.springframework.stereotype.Controller;
@@ -12,12 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 public class MainController {
 
     @GetMapping("/home")
+    @Loggable
     public String home(HttpServletRequest httpServletRequest) {
         String currentPrincipalName = httpServletRequest.getUserPrincipal().getName();
         return "home";
     }
 
     @GetMapping("/")
+    @Loggable
     public String index() {
         return "index";
     }
