@@ -1,4 +1,4 @@
-package com.chemaev.acpects;
+package com.chemaev.acpect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

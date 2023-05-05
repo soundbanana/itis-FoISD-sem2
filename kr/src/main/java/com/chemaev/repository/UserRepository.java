@@ -1,4 +1,4 @@
-package com.chemaev.repositories;
+package com.chemaev.repository;
 
 import com.chemaev.models.User;
 import org.springframework.data.domain.Page;

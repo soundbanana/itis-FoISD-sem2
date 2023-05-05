@@ -1,4 +1,4 @@
-package com.chemaev.filters;
+package com.chemaev.filter;
 
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;

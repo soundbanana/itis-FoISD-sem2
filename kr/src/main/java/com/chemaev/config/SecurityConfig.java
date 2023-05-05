@@ -1,6 +1,6 @@
 package com.chemaev.config;
 
-import com.chemaev.filters.JwtFilter;
+import com.chemaev.filter.JwtFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -2,7 +2,7 @@ package com.chemaev.controller;
 
 import com.chemaev.dto.CreateUserRequestDto;
 import com.chemaev.dto.UserResponseDto;
-import com.chemaev.services.UserService;
+import com.chemaev.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,4 +1,4 @@
-package com.chemaev.acpects;
+package com.chemaev.acpect;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

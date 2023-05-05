@@ -1,10 +1,10 @@
-package com.chemaev.services.impl;
+package com.chemaev.service.impl;
 
 import com.chemaev.dto.CreateUserRequestDto;
 import com.chemaev.dto.UserResponseDto;
 import com.chemaev.models.User;
-import com.chemaev.repositories.UserRepository;
-import com.chemaev.services.UserService;
+import com.chemaev.repository.UserRepository;
+import com.chemaev.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

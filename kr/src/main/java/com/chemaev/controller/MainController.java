@@ -1,6 +1,6 @@
 package com.chemaev.controller;
 
-import com.chemaev.acpects.Loggable;
+import com.chemaev.acpect.Loggable;
 import com.chemaev.dto.CreateUserRequestDto;
 import org.springframework.web.bind.annotation.GetMapping;
 

@@ -1,4 +1,4 @@
-package com.chemaev.filters;
+package com.chemaev.filter;
 
 import com.chemaev.models.User;
 import io.jsonwebtoken.Claims;

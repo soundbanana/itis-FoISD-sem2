@@ -1,11 +1,11 @@
-package com.chemaev.services;
+package com.chemaev.service;
 
 import com.chemaev.dto.JwtRequest;
 import com.chemaev.dto.JwtResponse;
-import com.chemaev.filters.JwtAuthentication;
-import com.chemaev.filters.JwtProvider;
+import com.chemaev.filter.JwtAuthentication;
+import com.chemaev.filter.JwtProvider;
 import com.chemaev.models.User;
-import com.chemaev.repositories.UserRepository;
+import com.chemaev.repository.UserRepository;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;

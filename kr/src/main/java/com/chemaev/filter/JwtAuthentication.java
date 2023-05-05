@@ -1,4 +1,4 @@
-package com.chemaev.filters;
+package com.chemaev.filter;
 
 import com.chemaev.models.Role;
 import lombok.Getter;

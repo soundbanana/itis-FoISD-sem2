@@ -3,7 +3,7 @@ package com.chemaev.controller;
 import com.chemaev.dto.JwtRequest;
 import com.chemaev.dto.JwtResponse;
 import com.chemaev.dto.RefreshJwtRequest;
-import com.chemaev.services.AuthService;
+import com.chemaev.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
