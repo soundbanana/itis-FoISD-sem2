@@ -34,7 +34,7 @@ public class SecurityConfig {
                 .authorizeRequests(auth ->
                         auth
                                 .antMatchers("/api/auth/login", "api/auth/token", "/sign_up").permitAll()
-                                .antMatchers("/hello").authenticated()
+                                .antMatchers("/hello", "/weather").authenticated()
                                 .and()
                                 .addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 ).build();

@@ -40,6 +40,9 @@ dependencies {
     implementation("org.webjars:webjars-locator-core:0.46")
     implementation("org.webjars:stomp-websocket:2.3.4")
     implementation("org.webjars:sockjs-client:1.5.1")
+
+    //JSONObject
+    implementation("org.json:json:20171018")
 }
 
 tasks.getByName<Test>("test") {
