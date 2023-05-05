@@ -31,10 +31,4 @@ public class MainController {
         model.addAttribute("user", new CreateUserRequestDto());
         return "sign_up";
     }
-
-    @ResponseBody
-    @GetMapping("/hello")
-    public String hello() {
-        return "Hello";
-    }
 }
