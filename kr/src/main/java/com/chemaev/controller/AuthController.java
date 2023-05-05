@@ -23,19 +23,21 @@ public class AuthController {
     @PostMapping("login")
     public ResponseEntity<JwtResponse> login(@RequestBody JwtRequest authRequest) throws AuthException {
         final JwtResponse token = authService.login(authRequest);
+        System.out.println(token);
         return ResponseEntity.ok(token);
     }
 
     @PostMapping("token")
     public ResponseEntity<JwtResponse> getNewAccessToken(@RequestBody RefreshJwtRequest request) throws AuthException {
         final JwtResponse token = authService.getAccessToken(request.getRefreshToken());
+        System.out.println(token);
         return ResponseEntity.ok(token);
     }
 
     @PostMapping("refresh")
     public ResponseEntity<JwtResponse> getNewRefreshToken(@RequestBody RefreshJwtRequest request) throws AuthException {
         final JwtResponse token = authService.refresh(request.getRefreshToken());
+        System.out.println(token);
         return ResponseEntity.ok(token);
     }
-
 }

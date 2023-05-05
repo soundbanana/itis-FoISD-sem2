@@ -33,8 +33,8 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests(auth ->
                         auth
-                                .antMatchers("/api/auth/login", "api/auth/token", "/*").permitAll()
-                                .anyRequest().authenticated()
+                                .antMatchers("/api/auth/login", "api/auth/token", "/sign_up").permitAll()
+                                .antMatchers("/hello").authenticated()
                                 .and()
                                 .addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 ).build();

@@ -77,7 +77,7 @@ public class JwtProvider {
             Jwts.parserBuilder()
                     .setSigningKey(secret)
                     .build()
-                    .parseClaimsJwt(token);
+                    .parseClaimsJws(token);
             return true;
         } catch (ExpiredJwtException expiredJwtException) {
 
@@ -97,7 +97,7 @@ public class JwtProvider {
         return Jwts.parserBuilder()
                 .setSigningKey(secret)
                 .build()
-                .parseClaimsJwt(token)
+                .parseClaimsJws(token)
                 .getBody();
     }
 }
