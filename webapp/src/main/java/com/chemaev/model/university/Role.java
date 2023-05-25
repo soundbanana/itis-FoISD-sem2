@@ -1,18 +1,17 @@
 package com.chemaev.model.university;
 
-import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+@RequiredArgsConstructor
+public enum Role  implements GrantedAuthority {
+    ADMIN("ADMIN"),
+    USER("USER");
 
-@Data
-@Entity(name = "roles")
-public class Role {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private final String value;
 
-    private String name;
+    @Override
+    public String getAuthority() {
+        return value;
+    }
 }

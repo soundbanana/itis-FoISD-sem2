@@ -33,4 +33,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     User findByVerificationCode(String code);
 
+    Optional<User> findByEmail(String mail);
+
 }
